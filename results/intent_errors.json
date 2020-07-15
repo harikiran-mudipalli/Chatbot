@@ -1,0 +1,18 @@
+[
+  {
+    "text": "New York",
+    "intent": "villa_booking",
+    "intent_prediction": {
+      "name": "destination",
+      "confidence": 0.5272253751754761
+    }
+  },
+  {
+    "text": "Hyderabad",
+    "intent": "origin",
+    "intent_prediction": {
+      "name": "villa_booking",
+      "confidence": 0.2736305594444275
+    }
+  }
+]
