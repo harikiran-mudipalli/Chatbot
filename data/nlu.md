@@ -1,21 +1,40 @@
-## intent:flight_booking
-- I need to [book a flight](FLIGHT)
-- [flight booking](FLIGHT:flight_booking)
-- [book flight](FLIGHT:flight_booking)
+## intent:main_menu
+- Let's see
+- Main menu
+- menu
 
-## intent:villa_booking
-- I need to [book a villa](VILLA)
-- [villa booking](VILLA:villa_booking)
-- [book villa](VILLA:villa_booking)
+## intent: travel_menu
+- travel menu
 
-## intent:google
-- google
+## intent:travel_best_valued_packages
+- plan my trip
 
-## intent:destination
-- New York
+## intent:pet_bool
+- do you plan to bring pets
+- are there any pets you wish to bring
 
-## intent:origin
-- Hyderabad
+## intent:travel_packages_by_interest
+- packages based on interest
+
+## intent:travel_packages_by_budget
+- packages based on budget
+
+## intent:property_booking
+- book a property
+
+## intent:Modify_cancel_Booking
+- [cancel my booking](modify_booking)
+- [change my booking](modify_booking)
+- [modify my booking](modify_booking)
+
+## intent:faq
+- go to faq
+- faq
+
+##intent:get_live_assistance
+- get live assistance
+- get live support
+- pass on to human 
 
 ## intent:greet
 - hey
