@@ -40,7 +40,9 @@ slots:
     type: unfeaturized
     auto_fill: false
   budget:
-    type: unfeaturized
+    type: float
+    min_value: 1000
+    max_value: 100000
     auto_fill: false
   cancel_reschedule:
     type: unfeaturized
