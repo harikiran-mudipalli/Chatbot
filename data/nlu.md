@@ -10,8 +10,8 @@
 - plan my trip
 
 ## intent:pet_bool
-- do you plan to bring pets
-- are there any pets you wish to bring
+- do you plan to bring [pets](pets)
+- are there any [pets](pets) you wish to bring
 
 ## intent:travel_packages_by_interest
 - packages based on interest

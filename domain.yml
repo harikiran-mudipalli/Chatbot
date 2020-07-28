@@ -1,244 +1,204 @@
----
-actions:
-  - utter_greet
-  - utter_cheer_up
-  - utter_did_that_help
-  - utter_happy
-  - utter_goodbye
-  - utter_iamabot
-  - action_hello_world
-  - utter_first_message
-  - utter_show_menu
-  - utter_show_travel_menu
-  - utter_ask_adults
-  - utter_ask_child
-  - utter_ask_pets
-  - utter_ask_budget
-  - utter_ask_destination
-  - utter_ask_origin
-  - utter_ask_stay_length
-  - utter_ask_more
-  - utter_ask_activity_name
-  - utter_ask_activity_date
-  - utter_show_cancel_booking_message
-  - utter_ask_booking_ID
-  - utter_ask_cancel_reschedule
-  - utter_show_live_support_link
-entities:
-  - FLIGHT
-  - VILLA
-  - modify_booking
-forms:
-  - trip_plan_form
-  - activity_package_search_form
-  - package_by_budget_form
-  - modify_cancel_booking_form
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - main_menu
-  - travel_menu
-  - travel_best_valued_packages
-  - pet_bool
-  - travel_packages_by_interest
-  - travel_packages_by_budget
-  - property_booking
-  - Modify_cancel_Booking
-  - faq
-  - get_live_assistance
-responses:
-  utter_ask_adults:
-    -
-      buttons:
-        -
-          payload: 1-3
-          title: 1-3
-        -
-          payload: 3-5
-          title: 3-5
-        -
-          payload: 5+
-          title: 5+
-      text: "Select the number of adults"
-  utter_ask_budget:
-    -
-      buttons:
-        -
-          payload: "Less than $2000"
-          title: "Less than $2000"
-        -
-          payload: $2000-$5000
-          title: $2000-$5000
-        -
-          payload: "More than $5000"
-          title: "More than $5000"
-      text: "What's an estimated budget per person(excluding airfare)?"
-  utter_ask_child:
-    -
-      buttons:
-        -
-          payload: None
-          title: None
-        -
-          payload: 1-3
-          title: 1-3
-        -
-          payload: 3+
-          title: 3+
-      text: "Select the number of children"
-  utter_ask_destination:
-    -
-      text: "Enter your Destination"
-  utter_ask_more:
-    -
-      buttons:
-        -
-          payload: /main_menu
-          title: Yes
-        -
-          payload: /goodbye
-          title: No
-      text: "Would you like to check more services?"
-  utter_ask_origin:
-    -
-      text: "Enter your boarding point"
-  utter_ask_pets:
-    -
-      buttons:
-        -
-          payload: Yes
-          title: Yes
-        -
-          payload: No
-          title: No
-      text: "Do you plan to bring any pets to the trip?"
-  utter_ask_stay_length:
-    -
-      text: "Enter the length of stay"
-  utter_cheer_up:
-    -
-      image: "https://i.imgur.com/nGF1K8f.jpg"
-      text: "Here is something to cheer you up:"
-  utter_did_that_help:
-    -
-      text: "Did that help you?"
-  utter_first_message:
-    -
-      buttons:
-        -
-          payload: /main_menu
-          title: Menu
-      text: |-
-          Hello! I'm TravelDude, Virtual assistant of Rentastico.
-          Click on Menu to assist you further
-  utter_goodbye:
-    -
-      text: Bye
-  utter_greet:
-    -
-      text: "Hey! How are you?"
-  utter_happy:
-    -
-      text: "Great, carry on!"
-  utter_iamabot:
-    -
-      text: "I am a bot, powered by Rasa."
-  utter_ask_activity_name:
-    -
-      text: "Great dude! What activity(ies) or event(s) you interested in?"
-  utter_ask_activity_date:
-    - text: "Enter activity date"
-  utter_show_menu:
-    -
-      buttons:
-        -
-          payload: /travel_menu
-          title: "Travel Menu"
-        -
-          payload: /property_booking
-          title: "Property Booking"
-        -
-          payload: /Modify_cancel_Booking
-          title: "Modify/Cancel Booking"
-        -
-          payload: /faq
-          title: FAQ
-        -
-          payload: /get_live_assistance
-          title: "Get live assistance"
-      text: "How can I help you?"
-  utter_show_travel_menu:
-    -
-      buttons:
-        -
-          payload: /travel_best_valued_packages
-          title: "Best valued packages"
-        -
-          payload: /travel_packages_by_interest
-          title: "Packages by Interest/Activity/Event"
-        -
-          payload: /travel_packages_by_budget
-          title: "Packages based on Budget"
-      text: "Choose one of the options."
-
-  utter_show_cancel_booking_message:
-    - text: I'm sorry to know you are having trouble with the trip. I'll try to help you.
-  utter_ask_booking_ID:
-    - text: Enter booking ID
-  utter_ask_cancel_reschedule:
-    - buttons:
-        - payload: Cancelation
-          title: Cancelation
-        - payload: Reschedule
-          title: Reschedule
-      text: Choose the action to be taken
-  utter_show_live_support_link:
-    - text: Hold on while I connect to live assistant.
-  utter_show_faq:
-    - text: showing FAQs
-
 session_config:
-  carry_over_slots_to_new_session: true
   session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- main_menu
+- travel_menu
+- travel_best_valued_packages
+- pet_bool
+- travel_packages_by_interest
+- travel_packages_by_budget
+- property_booking
+- Modify_cancel_Booking
+- faq
+- get_live_assistance
+entities:
+- pets
+- modify_booking
 slots:
   activity_date:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   activity_name:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   adults:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   booking_ID:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   budget:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   cancel_reschedule:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   child:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   destination:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   origin:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   pets:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   travel_date:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
   travel_period:
-    auto_fill: false
     type: unfeaturized
+    auto_fill: false
+responses:
+  utter_ask_adults:
+  - buttons:
+    - payload: 1-3
+      title: 1-3
+    - payload: 3-5
+      title: 3-5
+    - payload: 5+
+      title: 5+
+    text: Select the number of adults
+  utter_ask_budget:
+  - buttons:
+    - payload: Less than $2000
+      title: Less than $2000
+    - payload: $2000-$5000
+      title: $2000-$5000
+    - payload: More than $5000
+      title: More than $5000
+    text: What's an estimated budget per person(excluding airfare)?
+  utter_ask_child:
+  - buttons:
+    - payload: None
+      title: None
+    - payload: 1-3
+      title: 1-3
+    - payload: 3+
+      title: 3+
+    text: Select the number of children
+  utter_ask_destination:
+  - text: Enter your Destination
+  utter_ask_more:
+  - buttons:
+    - payload: /main_menu
+      title: Yes
+    - payload: /goodbye
+      title: No
+    text: Would you like to check more services?
+  utter_ask_origin:
+  - text: Enter your boarding point
+  utter_ask_pets:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Do you plan to bring any pets to the trip?
+  utter_ask_travel_date:
+  - text: Enter the date of Travel
+  utter_ask_travel_period:
+  - text: Enter the length of stay
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_first_message:
+  - buttons:
+    - payload: /main_menu
+      title: Menu
+    text: "Hello! I'm TravelDude, Virtual assistant of Rentastico.\nClick on Menu\
+      \ to assist you further"
+  utter_goodbye:
+  - text: Bye
+  utter_greet:
+  - text: Hey! How are you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_activity_name:
+  - text: Great dude! What activity(ies) or event(s) you interested in?
+  utter_ask_activity_date:
+  - text: Enter activity date
+  utter_show_menu:
+  - buttons:
+    - payload: /travel_menu
+      title: Travel Menu
+    - payload: /property_booking
+      title: Property Booking
+    - payload: /Modify_cancel_Booking
+      title: Modify/Cancel Booking
+    - payload: /faq
+      title: FAQ
+    - payload: /get_live_assistance
+      title: Get live assistance
+    text: How can I help you?
+  utter_show_travel_menu:
+  - buttons:
+    - payload: /travel_best_valued_packages
+      title: Best valued packages
+    - payload: /travel_packages_by_interest
+      title: Packages by Interest/Activity/Event
+    - payload: /travel_packages_by_budget
+      title: Packages based on Budget
+    text: Choose one of the options.
+  utter_show_cancel_booking_message:
+  - text: I'm sorry to know you are having trouble with the trip. I'll try to help
+      you.
+  utter_ask_booking_ID:
+  - text: Enter booking ID
+  utter_ask_cancel_reschedule:
+  - buttons:
+    - payload: Cancelation
+      title: Cancelation
+    - payload: Reschedule
+      title: Reschedule
+    text: Choose the action to be taken
+  utter_show_live_support_link:
+  - text: Hold on while I connect to live assistant.
+  utter_show_faq:
+  - text: showing FAQs
+actions:
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- action_hello_world
+- utter_first_message
+- utter_show_menu
+- utter_show_travel_menu
+- utter_ask_adults
+- utter_ask_child
+- utter_ask_pets
+- utter_ask_budget
+- utter_ask_travel_date
+- utter_ask_destination
+- utter_ask_origin
+- utter_ask_travel_period
+- utter_ask_more
+- utter_ask_activity_name
+- utter_ask_activity_date
+- utter_show_cancel_booking_message
+- utter_ask_booking_ID
+- utter_ask_cancel_reschedule
+- utter_show_live_support_link
+- utter_show_faq
+forms:
+- trip_plan_form
+- activity_package_search_form
+- package_by_budget_form
+- modify_cancel_booking_form

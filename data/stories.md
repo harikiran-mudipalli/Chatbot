@@ -16,6 +16,8 @@
   - form{"name":"trip_plan_form"}
   - form{"name":"null"}
   - utter_ask_more
+* goodbye
+  - utter_goodbye
   
 ## travel_packages_by_interest_path
 * greet

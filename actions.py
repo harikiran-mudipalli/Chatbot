@@ -48,6 +48,8 @@ class TripplanForm(FormAction):
             tracker: Tracker,
             domain: Dict[Text, Any],
     ) -> List[Dict]:
+        dest = tracker.get_slot('destination')
+        print(dest)
         dispatcher.utter_message("❤️❤️❤️Thank you so much for showing your interest in traveling with us")
         return []
 
