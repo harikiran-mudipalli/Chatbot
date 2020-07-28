@@ -15,10 +15,14 @@ intents:
 - pet_bool
 - travel_packages_by_interest
 - travel_packages_by_budget
+- amenities
+- property_type
+- facilities
 - property_booking
 - Modify_cancel_Booking
 - faq
 - get_live_assistance
+- property_booking
 entities:
 - pets
 - modify_booking
@@ -59,56 +63,85 @@ slots:
   travel_period:
     type: unfeaturized
     auto_fill: false
+  amenities:
+    type: list
+    auto_fill: false
+  property_type:
+    type: unfeaturized
+    auto_fill: false
+  facilities:
+    type: list
+    auto_fill: false
+
 responses:
   utter_ask_adults:
   - buttons:
-    - payload: 1-3
-      title: 1-3
-    - payload: 3-5
-      title: 3-5
-    - payload: 5+
-      title: 5+
-    text: Select the number of adults
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    text: Enter number of Adults
   utter_ask_budget:
   - buttons:
-    - payload: Less than $2000
-      title: Less than $2000
-    - payload: $2000-$5000
-      title: $2000-$5000
-    - payload: More than $5000
-      title: More than $5000
-    text: What's an estimated budget per person(excluding airfare)?
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    text: What's an estimated budget range per person(excluding airfare)?
   utter_ask_child:
   - buttons:
-    - payload: None
-      title: None
-    - payload: 1-3
-      title: 1-3
-    - payload: 3+
-      title: 3+
-    text: Select the number of children
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    text: Enter number of children
   utter_ask_destination:
-  - text: Enter your Destination
+  - buttons:
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    text: Enter your Destination
   utter_ask_more:
   - buttons:
     - payload: /main_menu
-      title: Yes
+      title: Main Menu
+    - payload: /travel_menu
+      title: Travel Menu
     - payload: /goodbye
-      title: No
+      title: No, Thanks
     text: Would you like to check more services?
   utter_ask_origin:
-  - text: Enter your boarding point
+  - buttons:
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    text: Enter your boarding point
   utter_ask_pets:
   - buttons:
-    - payload: /affirm
+    - payload: Yes
       title: Yes
-    - payload: /deny
+    - payload: No
       title: No
+    - payload: /travel_menu
+      title: Back to Travel Menu?
     text: Do you plan to bring any pets to the trip?
   utter_ask_travel_date:
-  - text: Enter the date of Travel
+  - buttons:
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    text: Enter the date of Travel(DD/MM/YYYY)
   utter_ask_travel_period:
-  - text: Enter the length of stay
+  - buttons:
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    text: Enter the length of stay
+  utter_ask_amenities:
+  - buttons:
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    text: Choose the Amenities
+  utter_ask_property_type:
+  - buttons:
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    text: Choose the Property Type
+  utter_ask_facilities:
+  - buttons:
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    text: Choose the Facilities
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
@@ -189,6 +222,9 @@ actions:
 - utter_ask_destination
 - utter_ask_origin
 - utter_ask_travel_period
+- utter_ask_amenities
+- utter_ask_property_type
+- utter_ask_facilities
 - utter_ask_more
 - utter_ask_activity_name
 - utter_ask_activity_date
@@ -202,3 +238,4 @@ forms:
 - activity_package_search_form
 - package_by_budget_form
 - modify_cancel_booking_form
+- property_booking_form

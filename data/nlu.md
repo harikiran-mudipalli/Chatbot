@@ -19,8 +19,14 @@
 ## intent:travel_packages_by_budget
 - packages based on budget
 
-## intent:property_booking
-- book a property
+## intent:amenities
+- amenities
+
+## intent:property_type
+- property type
+
+## intent: facilities
+- facilities
 
 ## intent:Modify_cancel_Booking
 - [cancel my booking](modify_booking)
@@ -35,6 +41,10 @@
 - get live assistance
 - get live support
 - pass on to human 
+
+## intent:property_booking_menu
+- book a property
+- show me the properties available
 
 ## intent:greet
 - hey

@@ -32,6 +32,8 @@
   - form{"name":"activity_package_search_form"}
   - form{"name":"null"}
   - utter_ask_more
+* goodbye
+  - utter_goodbye
 
 ## travel_packages_by_budget
 * greet
@@ -46,6 +48,8 @@
   - form{"name":"package_by_budget_form"}
   - form{"name":"null"}
   - utter_ask_more
+* goodbye
+  - utter_goodbye
   
 ## modify_cancel_booking
 * greet
@@ -58,6 +62,8 @@
   - form{"name":"modify_cancel_booking_form"}
   - form{"name":"null"}
   - utter_ask_more
+* goodbye
+  - utter_goodbye
 
 ## go_to_live_assistant
 * greet
@@ -66,6 +72,9 @@
   - utter_show_menu
 * get_live_assistance
   - utter_show_live_support_link
+  - utter_ask_more
+* goodbye
+  - utter_goodbye
   
 ## FAQ
 * greet
@@ -74,3 +83,6 @@
   - utter_show_menu
 * faq
   - utter_show_faq
+  - utter_ask_more
+* goodbye
+  - utter_goodbye
