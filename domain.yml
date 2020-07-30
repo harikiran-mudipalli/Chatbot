@@ -149,9 +149,11 @@ responses:
     text: Enter the length of stay
   utter_ask_amenities:
   - buttons:
-    - payload: /travel_menu
-      title: Back to Travel Menu?
-    text: Choose the Amenities
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Would you like to choose Amenities?
   utter_ask_property_type:
   - buttons:
     - payload: /travel_menu

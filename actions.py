@@ -45,17 +45,29 @@ class TripplanForm(FormAction):
         return "trip_plan_form"
 
     def required_slots(self, tracker) -> List[Text]:
-        return ["destination",
-                "origin",
-                "adults_count",
-                "child_count",
-                "pets",
-                "travel_date",
-                "travel_period",
-                "budget"
-                "amenities",
-                "property_type",
-                "facilities"]
+        if tracker.get_slot("amenities") == True:
+            return ["destination",
+                    "origin",
+                    "adults_count",
+                    "child_count",
+                    "pets",
+                    "travel_date",
+                    "travel_period",
+                    "budget",
+                    "amenities",
+                    "property_type",
+                    "facilities"]
+        else:
+            return ["destination",
+                    "origin",
+                    "adults_count",
+                    "child_count",
+                    "pets",
+                    "travel_date",
+                    "travel_period",
+                    "budget",
+                    "amenities"]
+
 
     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
         return {
@@ -69,6 +81,10 @@ class TripplanForm(FormAction):
             "budget": [self.from_text(), ],
             "destination": [self.from_text(), ],
             "origin": [self.from_text(), ],
+            "amenities": [self.from_intent(intent='affirm',value=True),
+                          self.from_intent(intent='deny',value=False)],
+            "property_type": [self.from_text(), ],
+            "facilities": [self.from_text(), ]
         }
 
     def submit(
