@@ -22,10 +22,31 @@ intents:
 - Modify_cancel_Booking
 - faq
 - get_live_assistance
-- property_booking
+- value_correction
+- property_booking_menu
 entities:
 - pets
 - modify_booking
+- cities
+- change_destination
+- destination
+- change_origin
+- origin
+- change_adults_count
+- adults_count
+- change_children_count
+- child_count
+- number
+- change_travel_date
+- travel_date
+- change_travel_period
+- travel_period
+- change_budget
+- budget
+- bedroom
+- bathroom
+- wifi
+- pool
 slots:
   activity_date:
     type: unfeaturized
@@ -33,30 +54,37 @@ slots:
   activity_name:
     type: unfeaturized
     auto_fill: false
-  adults:
+  adults_count:
     type: unfeaturized
+    auto_fill: false
+  amenities:
+    type: list
     auto_fill: false
   booking_ID:
     type: unfeaturized
     auto_fill: false
   budget:
-    type: float
-    min_value: 1000
-    max_value: 100000
+    type: unfeaturized
     auto_fill: false
   cancel_reschedule:
     type: unfeaturized
     auto_fill: false
-  child:
+  child_count:
     type: unfeaturized
     auto_fill: false
   destination:
     type: unfeaturized
     auto_fill: false
+  facilities:
+    type: list
+    auto_fill: false
   origin:
     type: unfeaturized
     auto_fill: false
   pets:
+    type: unfeaturized
+    auto_fill: false
+  property_type:
     type: unfeaturized
     auto_fill: false
   travel_date:
@@ -65,18 +93,8 @@ slots:
   travel_period:
     type: unfeaturized
     auto_fill: false
-  amenities:
-    type: list
-    auto_fill: false
-  property_type:
-    type: unfeaturized
-    auto_fill: false
-  facilities:
-    type: list
-    auto_fill: false
-
 responses:
-  utter_ask_adults:
+  utter_ask_adults_count:
   - buttons:
     - payload: /travel_menu
       title: Back to Travel Menu?
@@ -86,7 +104,7 @@ responses:
     - payload: /travel_menu
       title: Back to Travel Menu?
     text: What's an estimated budget range per person(excluding airfare)?
-  utter_ask_child:
+  utter_ask_child_count:
   - buttons:
     - payload: /travel_menu
       title: Back to Travel Menu?
@@ -216,8 +234,8 @@ actions:
 - utter_first_message
 - utter_show_menu
 - utter_show_travel_menu
-- utter_ask_adults
-- utter_ask_child
+- utter_ask_adults_count
+- utter_ask_child_count
 - utter_ask_pets
 - utter_ask_budget
 - utter_ask_travel_date
@@ -235,6 +253,7 @@ actions:
 - utter_ask_cancel_reschedule
 - utter_show_live_support_link
 - utter_show_faq
+- action_change_value
 forms:
 - trip_plan_form
 - activity_package_search_form

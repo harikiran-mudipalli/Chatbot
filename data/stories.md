@@ -15,6 +15,8 @@
   - trip_plan_form
   - form{"name":"trip_plan_form"}
   - form{"name":"null"}
+* value_correction
+  - action_change_value
   - utter_ask_more
 * goodbye
   - utter_goodbye

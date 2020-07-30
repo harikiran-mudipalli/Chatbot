@@ -19,14 +19,8 @@
 ## intent:travel_packages_by_budget
 - packages based on budget
 
-## intent:amenities
-- amenities
-
 ## intent:property_type
 - property type
-
-## intent: facilities
-- facilities
 
 ## intent:Modify_cancel_Booking
 - [cancel my booking](modify_booking)
@@ -102,3 +96,68 @@
 - are you a human?
 - am I talking to a bot?
 - am I talking to a human?
+
+## intent: value_correction
+- I want to [change my destination](change_destination) to [New York](destination)
+- can I [change my destination](change_destination) to [Barcelona](destination)?
+- can you [change my destination](change_destination) to [Athens](destination)?
+- Please [change my destination](change_destination) to [Sydney](destination)
+- I would like to [update my destination](change_destination) to [Havana](destination)
+- [change my destination](change_destination) to [Paris](destination)
+- [update my destination](change_destination) to [Doha](destination)
+- [change my destination](change_destination) to [Amsterdam](destination)
+- [change my destination](change_destination) to [Venice](destination)
+- [change my destination](change_destination) to [Kyoto](destination)
+
+- I want to [change my boarding point](change_origin) to [Hyderabad](origin)
+- can I [change my boarding point](change_origin) to [Chennai](origin)?
+- can you [change my boarding point](change_origin) to [Delhi](origin)?
+- Please [update my boarding point](change_origin) to [Kolkata](origin)
+- I would like to [change my boarding point](change_origin) to [Mumbai](origin)
+- [change my boarding point](change_origin) to [Goa](origin)
+- [change my boarding point](change_origin) to [Cape Town](origin)
+- [change my boarding point](change_origin) to [Budapest](origin)
+- [update my boarding point](change_origin) to [Lisbon](origin)
+- [change my boarding point](change_origin) to [Istanbul](origin)
+
+- [change adults count](change_adults_count) to [3](adults_count)
+- Can you [change adults count](change_adults_count) to [1](adults_count)
+- [change adults count](change_adults_count) to [2](adults_count)
+- Can you [change adults count](change_adults_count) to [4](adults_count)
+- [change adults count](change_adults_count) to [5](adults_count)
+- Can you [change adults count](change_adults_count) to [6](adults_count)
+- [change adults count](change_adults_count) to [7](adults_count)
+- Can you [change adults count](change_adults_count) to [8](adults_count)
+- [change children count](change_children_count) to [9](adults_count)
+- Can you [change adults count](change_adults_count) to [10](adults_count)
+
+- [change children count](change_children_count) to [5](child_count)
+- Can you [change children count](change_children_count) to [10](child_count)
+- [change children count](change_children_count) to [1](child_count)
+- Can you [change children count](change_children_count) to [0](child_count)
+- [change children count](change_children_count) to [2](child_count)
+- Can you [change children count](change_children_count) to [3](child_count)
+- [change children count](change_children_count) to [4](child_count)
+- Can you [change children count](change_children_count) to [6](child_count)
+- [change children count](change_children_count) to [7](child_count)
+- Can you [change children count](change_children_count) to [8](child_count)
+
+- [change travel date](change_travel_date) to [11/11/23](travel_date)
+- [change travel period](change_travel_period) to [12](travel_period)
+- [change budget](change_budget) to [2000](budget)
+
+## intent: amenities
+- [2](bedroom) [1](bathroom)
+
+## intent: facilities
+- [wifi](wifi) [pool](pool)
+
+## lookup:countries
+- data/countries.txt
+
+## regex:number
+- [0-9]{1,10}
+
+## regex:date_format
+-[0-9]{2}/[0-9]{2}/[0-9]{4}
+
