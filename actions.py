@@ -52,10 +52,10 @@ class TripplanForm(FormAction):
                 "pets",
                 "travel_date",
                 "travel_period",
-                "budget"]
-                #"amenities",
-                #"property_type",
-                #"facilities"
+                "budget"
+                "amenities",
+                "property_type",
+                "facilities"]
 
     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
         return {
