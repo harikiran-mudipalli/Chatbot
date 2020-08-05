@@ -88,3 +88,12 @@
   - utter_ask_more
 * goodbye
   - utter_goodbye
+  
+## break a tripplanform when travel_menu intent occured
+* travel_best_valued_packages
+  - trip_plan_form
+  - form{"name":"trip_plan_form"}
+  - form{"name":"null"}
+* travel_menu
+  - action_slot_reset
+  - utter_show_travel_menu

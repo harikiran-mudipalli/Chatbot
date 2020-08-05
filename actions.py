@@ -12,16 +12,19 @@ from typing import Any, Text, Dict, List, Union, Optional
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormAction
-from rasa_sdk.events import SlotSet
+from rasa_sdk.events import SlotSet, AllSlotsReset, EventType
 
-entity_dic = {"change_destination":"destination",
-              "change_origin":"origin",
-              "change_adults_count":"adults_count",
-              "change_children_count":"child_count",
-              "change_travel_date":"travel_date",
-              "change_travel_period":"travel_period",
-              "change_budget":"budget",
+#from rasa_core.events import AllSlotsReset
+
+entity_dic = {"change_destination": "destination",
+              "change_origin": "origin",
+              "change_adults_count": "adults_count",
+              "change_children_count": "child_count",
+              "change_travel_date": "travel_date",
+              "change_travel_period": "travel_period",
+              "change_budget": "budget",
               }
+
 
 class ChangeSlotValue(Action):
     def name(self):
@@ -29,16 +32,20 @@ class ChangeSlotValue(Action):
 
     def run(self, dispatcher, tracker, domain):
         if tracker.latest_message['intent'].get('name') == "value_correction":
-            key_ent = tracker.latest_message['entities'][0]['entity'];print("key ent",key_ent)
-            val_ent = entity_dic[key_ent];print("val ent",val_ent)
+            key_ent = tracker.latest_message['entities'][0]['entity']
+            print("key ent", key_ent)
+            val_ent = entity_dic[key_ent]
+            print("val ent", val_ent)
             if key_ent in list(entity_dic):
-                defined_slot = tracker.get_slot(val_ent); print("defined slot",defined_slot)
+                defined_slot = tracker.get_slot(val_ent)
+                print("defined slot", defined_slot)
                 if defined_slot is not None:
                     defined_slot = None
                     slot_value = tracker.latest_message['entities'][1]['value']
-                    print("slot value:",slot_value,"\nentity:", val_ent)
+                    print("slot value:", slot_value, "\nentity:", val_ent)
                     dispatcher.utter_message("The value is changed!")
                     return [SlotSet(val_ent, slot_value)]
+
 
 class TripplanForm(FormAction):
     def name(self):
@@ -68,24 +75,48 @@ class TripplanForm(FormAction):
                     "budget",
                     "amenities"]
 
-
     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+
         return {
-            "travel_date": [self.from_text(), ],
-            "travel_period": [self.from_text(), ],
+            "travel_date": [self.from_text(not_intent="travel_menu"), ],
+            "travel_period": [self.from_text(not_intent="travel_menu"), ],
             "pets": [self.from_entity(entity="pets"),
-                     self.from_intent(intent='affirm',value=True),
-                     self.from_intent(intent='deny',value=False)],
-            "adults_count": [self.from_text(), ],
-            "child_count": [self.from_text(), ],
-            "budget": [self.from_text(), ],
-            "destination": [self.from_text(), ],
-            "origin": [self.from_text(), ],
-            "amenities": [self.from_intent(intent='affirm',value=True),
-                          self.from_intent(intent='deny',value=False)],
-            "property_type": [self.from_text(), ],
-            "facilities": [self.from_text(), ]
+                     self.from_intent(intent='affirm', value=True),
+                     self.from_intent(intent='deny', value=False)],
+            "adults_count": [self.from_text(not_intent="travel_menu"), ],
+            "child_count": [self.from_text(not_intent="travel_menu"), ],
+            "budget": [self.from_text(not_intent="travel_menu"), ],
+            "destination": [self.from_text(not_intent="travel_menu"), ],
+            "origin": [self.from_text(not_intent="travel_menu"), ],
+            "amenities": [self.from_intent(intent='affirm', value=True),
+                          self.from_intent(intent='deny', value=False)],
+            "property_type": [self.from_text(not_intent="travel_menu"), ],
+            "facilities": [self.from_text(not_intent="travel_menu"), ]
         }
+
+    """def request_next_slot(
+            self,
+            dispatcher: "CollectingDispatcher",
+            tracker: "Tracker",
+            domain: Dict[Text, Any],
+    ) -> Optional[List[EventType]]:
+        #Request the next slot and utter template if needed,
+            #else return None
+        for slot in self.required_slots(tracker):
+            if self._should_request_slot(tracker, slot):
+
+                ## Condition of validated slot that triggers deactivation
+                if tracker.latest_message['intent'].get('name') == "travel_menu":
+                    dispatcher.utter_message(text="Sorry, I can't help you with that")
+                    return [AllSlotsReset()]
+
+                ## For all other slots, continue as usual
+                logger.debug(f"Request next slot '{slot}'")
+                dispatcher.utter_message(
+                template=f"utter_ask_{slot}", **tracker.slots
+                )
+                return [SlotSet(REQUESTED_SLOT, slot)]
+        return None"""
 
     def submit(
             self,
@@ -93,17 +124,20 @@ class TripplanForm(FormAction):
             tracker: Tracker,
             domain: Dict[Text, Any],
     ) -> List[Dict]:
-        dispatcher.utter_button_message("Do you want to make any changes?\n",
-                                 buttons=[{"Destination: " : tracker.get_slot("destination"),
-                                 "Boarding Point: " : tracker.get_slot("origin"),
-                                 "Number of Adults: " : tracker.get_slot("adults_count"),
-                                 "Number of Children: " : tracker.get_slot("child_count"),
-                                 "Pets: " : "No" if tracker.get_slot("pets") is False else "Yes",
-                                 "Traveling Date: " : tracker.get_slot("travel_date"),
-                                 "Length of Trip: " : tracker.get_slot("travel_period"),
-                                 "Budget: " : tracker.get_slot("budget")}]
-                                 )
+
+        ''' buttons = ["Destination: {}".format(tracker.get_slot("destination")),
+                    "Boarding Point: {}".format(tracker.get_slot("origin")),
+                    "Number of Adults: {}".format(tracker.get_slot("adults_count")),
+                    "Number of Children: {}".format(tracker.get_slot("child_count")),
+                    "Pets: {}".format("No" if tracker.get_slot("pets") is False else "Yes"),
+                    "Traveling Date: {}".format(tracker.get_slot("travel_date")),
+                    "Length of Trip: {}".format(tracker.get_slot("travel_period")),
+                    "Budget: {}".format(tracker.get_slot("budget"))]
+        message = "Do you want to make any changes?"'''
+        dispatcher.utter_message("Form Filled!")
         return []
+
+
 
 class ActivityPackageSearchForm(FormAction):
     def name(self):
@@ -127,6 +161,7 @@ class ActivityPackageSearchForm(FormAction):
         dispatcher.utter_message("Need to show list of properties available w.r.t. given event")
         return []
 
+
 class PackageByBudgetForm(FormAction):
     def name(self):
         return "package_by_budget_form"
@@ -149,9 +184,10 @@ class PackageByBudgetForm(FormAction):
         dispatcher.utter_message("Show available packages")
         return []
 
+
 class ModifyCancelBookingForm(FormAction):
     def name(self):
-        return "modify_cancel_booking_form"
+          return "modify_cancel_booking_form"
 
     def required_slots(self, tracker) -> List[Text]:
         return ["booking_ID", "cancel_reschedule"]
@@ -170,3 +206,9 @@ class ModifyCancelBookingForm(FormAction):
     ) -> List[Dict]:
         dispatcher.utter_message("Respective Modify/Cancel action acknowledgement")
         return []
+
+class ActionSlotReset(Action):
+    def name(self):
+        return 'action_slot_reset'
+    def run(self, dispatcher, tracker, domain):
+        return[AllSlotsReset()]

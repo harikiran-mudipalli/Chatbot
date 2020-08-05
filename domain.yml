@@ -96,22 +96,22 @@ slots:
 responses:
   utter_ask_adults_count:
   - buttons:
-    - payload: /travel_menu
+    - payload: '/travel_menu'
       title: Back to Travel Menu?
     text: Enter number of Adults
   utter_ask_budget:
   - buttons:
-    - payload: /travel_menu
+    - payload: '/travel_menu'
       title: Back to Travel Menu?
     text: What's an estimated budget range per person(excluding airfare)?
   utter_ask_child_count:
   - buttons:
-    - payload: /travel_menu
+    - payload: '/travel_menu'
       title: Back to Travel Menu?
     text: Enter number of children
   utter_ask_destination:
   - buttons:
-    - payload: /travel_menu
+    - payload: '/travel_menu'
       title: Back to Travel Menu?
     text: Enter your Destination
   utter_ask_more:
@@ -125,7 +125,7 @@ responses:
     text: Would you like to check more services?
   utter_ask_origin:
   - buttons:
-    - payload: /travel_menu
+    - payload: '/travel_menu'
       title: Back to Travel Menu?
     text: Enter your boarding point
   utter_ask_pets:
@@ -134,17 +134,17 @@ responses:
       title: Yes
     - payload: No
       title: No
-    - payload: /travel_menu
+    - payload: '/travel_menu'
       title: Back to Travel Menu?
     text: Do you plan to bring any pets to the trip?
   utter_ask_travel_date:
   - buttons:
-    - payload: /travel_menu
+    - payload: '/travel_menu'
       title: Back to Travel Menu?
     text: Enter the date of Travel(DD/MM/YYYY)
   utter_ask_travel_period:
   - buttons:
-    - payload: /travel_menu
+    - payload: '/travel_menu'
       title: Back to Travel Menu?
     text: Enter the length of stay
   utter_ask_amenities:
@@ -256,6 +256,7 @@ actions:
 - utter_show_live_support_link
 - utter_show_faq
 - action_change_value
+- action_slot_reset
 forms:
 - trip_plan_form
 - activity_package_search_form
