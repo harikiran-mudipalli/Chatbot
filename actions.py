@@ -78,21 +78,22 @@ class TripplanForm(FormAction):
     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
 
         return {
-            "travel_date": [self.from_text(not_intent="travel_menu"), ],
-            "travel_period": [self.from_text(not_intent="travel_menu"), ],
+            "travel_date": [self.from_text(not_intent=["travel_menu", "greet", "stop"])],
+            "travel_period": [self.from_text(not_intent=["travel_menu", "greet", "stop"])],
             "pets": [self.from_entity(entity="pets"),
                      self.from_intent(intent='affirm', value=True),
                      self.from_intent(intent='deny', value=False)],
-            "adults_count": [self.from_text(not_intent="travel_menu"), ],
-            "child_count": [self.from_text(not_intent="travel_menu"), ],
-            "budget": [self.from_text(not_intent="travel_menu"), ],
-            "destination": [self.from_text(not_intent="travel_menu"), ],
-            "origin": [self.from_text(not_intent="travel_menu"), ],
+            "adults_count": [self.from_text(not_intent=["travel_menu", "greet", "stop"]), ],
+            "child_count": [self.from_text(not_intent=["travel_menu", "greet", "stop"]), ],
+            "budget": [self.from_text(not_intent=["travel_menu", "greet", "stop"]), ],
+            "destination": [self.from_text(not_intent=["travel_menu", "greet", "stop"]), ],
+            "origin": [self.from_text(not_intent=["travel_menu", "greet", "stop"]), ],
             "amenities": [self.from_intent(intent='affirm', value=True),
                           self.from_intent(intent='deny', value=False)],
-            "property_type": [self.from_text(not_intent="travel_menu"), ],
-            "facilities": [self.from_text(not_intent="travel_menu"), ]
+            "property_type": [self.from_text(not_intent=["travel_menu", "greet", "stop"]), ],
+            "facilities": [self.from_text(not_intent=["travel_menu", "greet", "stop"]), ]
         }
+
 
     """def request_next_slot(
             self,
@@ -106,16 +107,10 @@ class TripplanForm(FormAction):
             if self._should_request_slot(tracker, slot):
 
                 ## Condition of validated slot that triggers deactivation
-                if tracker.latest_message['intent'].get('name') == "travel_menu":
+                if tracker.latest_message['intent'].get('name') == "greet":
                     dispatcher.utter_message(text="Sorry, I can't help you with that")
                     return [AllSlotsReset()]
 
-                ## For all other slots, continue as usual
-                logger.debug(f"Request next slot '{slot}'")
-                dispatcher.utter_message(
-                template=f"utter_ask_{slot}", **tracker.slots
-                )
-                return [SlotSet(REQUESTED_SLOT, slot)]
         return None"""
 
     def submit(
@@ -211,4 +206,6 @@ class ActionSlotReset(Action):
     def name(self):
         return 'action_slot_reset'
     def run(self, dispatcher, tracker, domain):
+        if tracker.latest_message['intent'].get('name') == "greet":
+            dispatcher.utter_template('utter_greet', tracker)
         return[AllSlotsReset()]

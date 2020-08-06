@@ -41,12 +41,12 @@
 - show me the properties available
 
 ## intent:greet
-- hey
-- hello
-- hi
-- good morning
-- good evening
-- hey there
+- [hey](greeting)
+- [hello](greeting)
+- [hi](greeting)
+- [good morning](greeting)
+- [good evening](greeting)
+- [hey there](greeting)
 
 ## intent:goodbye
 - bye
@@ -96,6 +96,28 @@
 - are you a human?
 - am I talking to a bot?
 - am I talking to a human?
+
+## intent: stop
+  examples: |
+    - ok then you cant help me
+    - that was shit, you're not helping
+    - you can't help me
+    - you can't help me with what i need
+    - i guess you can't help me then
+    - ok i guess you can't help me
+    - that's not what i want
+    - ok, but that doesnt help me
+    - this is leading to nothing
+    - this conversation is not really helpful
+    - you cannot help me with what I want
+    - I think you cant help me
+    - hm i don't think you can do what i want
+    - stop
+    - stop go back
+    - do you get anything?
+    - and you call yourself bot company? pff
+    - and that's it?
+    - nothing else?
 
 ## intent: value_correction
 - I want to [change my destination](change_destination) to [New York](destination)

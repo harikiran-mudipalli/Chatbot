@@ -47,6 +47,7 @@ entities:
 - bathroom
 - wifi
 - pool
+- greeting
 slots:
   activity_date:
     type: unfeaturized
@@ -76,7 +77,7 @@ slots:
     type: unfeaturized
     auto_fill: false
   facilities:
-    type: list
+    type: unfeaturized
     auto_fill: false
   origin:
     type: unfeaturized
@@ -257,6 +258,7 @@ actions:
 - utter_show_faq
 - action_change_value
 - action_slot_reset
+- action_restart
 forms:
 - trip_plan_form
 - activity_package_search_form
