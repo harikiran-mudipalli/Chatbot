@@ -158,7 +158,18 @@
     - action_slot_reset
     - form{"name": null}
     - utter_first_message
-
+    
+<!--################# Track booking ####################-->
+## track booking happy path
+* track_booking
+  - utter_ask_booking_ID
+  - track_booking_form
+  - form{"name":"track_booking_form"}
+  - form{"name":"null"}
+  - utter_ask_more
+* goodbye
+  - utter_goodbye
+  
 <!--################# Modify/cancel booking ####################-->
   
 ## modify_cancel_booking

@@ -168,6 +168,10 @@
 - [change travel period](change_travel_period) to [12](travel_period)
 - [change budget](change_budget) to [2000](budget)
 
+## intent: track_booking
+- track my booking
+- track booking
+
 ## intent: amenities
 - property type
 - facilities
