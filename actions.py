@@ -94,25 +94,6 @@ class TripplanForm(FormAction):
             "facilities": [self.from_text(not_intent=["travel_menu", "greet", "stop"]), ]
         }
 
-
-    """def request_next_slot(
-            self,
-            dispatcher: "CollectingDispatcher",
-            tracker: "Tracker",
-            domain: Dict[Text, Any],
-    ) -> Optional[List[EventType]]:
-        #Request the next slot and utter template if needed,
-            #else return None
-        for slot in self.required_slots(tracker):
-            if self._should_request_slot(tracker, slot):
-
-                ## Condition of validated slot that triggers deactivation
-                if tracker.latest_message['intent'].get('name') == "greet":
-                    dispatcher.utter_message(text="Sorry, I can't help you with that")
-                    return [AllSlotsReset()]
-
-        return None"""
-
     def submit(
             self,
             dispatcher: CollectingDispatcher,

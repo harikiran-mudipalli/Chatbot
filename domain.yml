@@ -24,6 +24,7 @@ intents:
 - get_live_assistance
 - value_correction
 - property_booking_menu
+- stop
 entities:
 - pets
 - modify_booking
@@ -97,22 +98,22 @@ slots:
 responses:
   utter_ask_adults_count:
   - buttons:
-    - payload: '/travel_menu'
+    - payload: /travel_menu
       title: Back to Travel Menu?
     text: Enter number of Adults
   utter_ask_budget:
   - buttons:
-    - payload: '/travel_menu'
+    - payload: /travel_menu
       title: Back to Travel Menu?
     text: What's an estimated budget range per person(excluding airfare)?
   utter_ask_child_count:
   - buttons:
-    - payload: '/travel_menu'
+    - payload: /travel_menu
       title: Back to Travel Menu?
     text: Enter number of children
   utter_ask_destination:
   - buttons:
-    - payload: '/travel_menu'
+    - payload: /travel_menu
       title: Back to Travel Menu?
     text: Enter your Destination
   utter_ask_more:
@@ -126,7 +127,7 @@ responses:
     text: Would you like to check more services?
   utter_ask_origin:
   - buttons:
-    - payload: '/travel_menu'
+    - payload: /travel_menu
       title: Back to Travel Menu?
     text: Enter your boarding point
   utter_ask_pets:
@@ -135,17 +136,17 @@ responses:
       title: Yes
     - payload: No
       title: No
-    - payload: '/travel_menu'
+    - payload: /travel_menu
       title: Back to Travel Menu?
     text: Do you plan to bring any pets to the trip?
   utter_ask_travel_date:
   - buttons:
-    - payload: '/travel_menu'
+    - payload: /travel_menu
       title: Back to Travel Menu?
     text: Enter the date of Travel(DD/MM/YYYY)
   utter_ask_travel_period:
   - buttons:
-    - payload: '/travel_menu'
+    - payload: /travel_menu
       title: Back to Travel Menu?
     text: Enter the length of stay
   utter_ask_amenities:
@@ -226,6 +227,8 @@ responses:
   - text: Hold on while I connect to live assistant.
   utter_show_faq:
   - text: showing FAQs
+  utter_default:
+    - text: Sorry, I didn’t understand that
 actions:
 - utter_greet
 - utter_cheer_up
