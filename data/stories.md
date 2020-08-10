@@ -4,7 +4,7 @@
 * main_menu
   - utter_show_menu
   
-################# Travel by best valued package ####################  
+<!--####### Travel by best valued package ######-->  
   
 ## travel_by_best_valued_path
 * travel_menu
@@ -55,7 +55,7 @@
     - utter_first_message
     
     
-################# Travel by interest/activity ####################
+<!--################# Travel by interest/activity ####################-->
   
 ## travel_packages_by_interest_path
 * travel_menu
@@ -107,7 +107,7 @@
     - form{"name": null}
     - utter_first_message
   
-################# Travel by budget ####################
+<!--################# Travel by budget ####################-->
 
 ## travel_packages_by_budget
 * travel_menu
@@ -159,7 +159,7 @@
     - form{"name": null}
     - utter_first_message
 
-################# Modify/cancel booking ####################
+<!--################# Modify/cancel booking ####################-->
   
 ## modify_cancel_booking
 * greet
@@ -227,4 +227,5 @@
   - utter_ask_more
 * goodbye
   - utter_goodbye
+  
   

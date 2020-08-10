@@ -169,13 +169,11 @@
 - [change budget](change_budget) to [2000](budget)
 
 ## intent: amenities
-- [2](bedroom) [1](bathroom)
-
-## intent: facilities
-- [wifi](wifi) [pool](pool)
+- property type
+- facilities
 
 ## lookup:countries
-- data/countries.txt
+- data/lookups/locations.txt
 
 ## regex:number
 - [0-9]{1,10}
