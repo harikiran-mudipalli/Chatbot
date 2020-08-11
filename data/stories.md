@@ -12,7 +12,7 @@
 * travel_best_valued_packages
   - trip_plan_form
   - form{"name":"trip_plan_form"}
-  - form{"name":"null"}
+  - form{"name":null}
   - utter_ask_more
 * goodbye
   - utter_goodbye
@@ -23,13 +23,13 @@
   - form{"name":"trip_plan_form"}
 * value_correction
   - action_change_value
-  - form{"name":"null"}
+  - form{"name":null}
   
 ## ## travel by best valued value correction path 2
 * travel_best_valued_packages
   - trip_plan_form
   - form{"name":"trip_plan_form"}
-  - form{"name":"null"}
+  - form{"name":null}
 * value_correction
   - action_change_value
   
@@ -64,7 +64,7 @@
   - utter_ask_activity_name
   - activity_package_search_form
   - form{"name":"activity_package_search_form"}
-  - form{"name":"null"}
+  - form{"name":null}
   - utter_ask_more
 * goodbye
   - utter_goodbye
@@ -75,14 +75,14 @@
   - form{"name":"activity_package_search_form"}
 * value_correction
   - action_change_value
-  - form{"name":"null"}
+  - form{"name":null}
   - utter_ask_more
   
 ## travel by interest correction path 2
 * travel_packages_by_interest
   - activity_package_search_form
   - form{"name":"activity_package_search_form"}
-  - form{"name":"null"}
+  - form{"name":null}
 * value_correction
   - action_change_value
   - utter_ask_more
@@ -116,7 +116,7 @@
   - utter_ask_budget
   - package_by_budget_form
   - form{"name":"package_by_budget_form"}
-  - form{"name":"null"}
+  - form{"name":null}
   - utter_ask_more
 * goodbye
   - utter_goodbye
@@ -127,14 +127,14 @@
   - form{"name":"package_by_budget_form"}
 * value_correction
   - action_change_value
-  - form{"name":"null"}
+  - form{"name":null}
   - utter_ask_more
   
 ## travel by budget correction path 2
 * travel_packages_by_budget
   - package_by_budget_form
   - form{"name":"package_by_budget_form"}
-  - form{"name":"null"}
+  - form{"name":null}
 * value_correction
   - action_change_value
   - utter_ask_more
@@ -165,7 +165,7 @@
   - utter_ask_booking_ID
   - track_booking_form
   - form{"name":"track_booking_form"}
-  - form{"name":"null"}
+  - form{"name":null}
   - utter_ask_more
 * goodbye
   - utter_goodbye
@@ -181,7 +181,8 @@
   - utter_show_cancel_booking_message
   - modify_cancel_booking_form
   - form{"name":"modify_cancel_booking_form"}
-  - form{"name":"null"}
+  - form{"name":null}
+  - action_slot_reset
   - utter_ask_more
 * goodbye
   - utter_goodbye
@@ -193,7 +194,7 @@
   - form{"name":"modify_cancel_booking_form"}
 * value_correction
   - action_change_value
-  - form{"name":"null"}
+  - form{"name":null}
   - utter_ask_more
   
 ## modify_cancel_booking correction path 2
@@ -201,7 +202,7 @@
   - utter_show_cancel_booking_message
   - modify_cancel_booking_form
   - form{"name":"modify_cancel_booking_form"}
-  - form{"name":"null"}
+  - form{"name":null}
 * value_correction
   - action_change_value
   - utter_ask_more
