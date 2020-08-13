@@ -14,6 +14,7 @@
   - form{"name":"trip_plan_form"}
   - form{"name":null}
   - utter_ask_more
+  - action_slot_reset
 * goodbye
   - utter_goodbye
   
@@ -66,44 +67,54 @@
   - form{"name":"activity_package_search_form"}
   - form{"name":null}
   - utter_ask_more
+  - action_slot_reset
 * goodbye
   - utter_goodbye
   
 ## travel by interest correction path 1
 * travel_packages_by_interest
+  - utter_ask_activity_name
   - activity_package_search_form
   - form{"name":"activity_package_search_form"}
 * value_correction
   - action_change_value
+  - activity_package_search_form
   - form{"name":null}
   - utter_ask_more
+  - action_slot_reset
   
 ## travel by interest correction path 2
 * travel_packages_by_interest
+  - utter_ask_activity_name
   - activity_package_search_form
   - form{"name":"activity_package_search_form"}
   - form{"name":null}
 * value_correction
   - action_change_value
   - utter_ask_more
+  - action_slot_reset
   
 ## break a ActivityPackageSearchForm when travel_menu intent occurs
 * travel_packages_by_interest
+    - utter_ask_activity_name
     - activity_package_search_form
     - form{"name": "activity_package_search_form"}
 * travel_menu
     - action_deactivate_form
     - action_slot_reset
+    - activity_package_search_form
     - form{"name": null}
     - utter_show_travel_menu
     
 ## break a ActivityPackageSearchForm when greet intent occurs
 * travel_packages_by_interest
+    - utter_ask_activity_name
     - activity_package_search_form
     - form{"name": "activity_package_search_form"}
 * greet
     - action_deactivate_form
     - action_slot_reset
+    - activity_package_search_form
     - form{"name": null}
     - utter_first_message
   
@@ -182,12 +193,12 @@
   - modify_cancel_booking_form
   - form{"name":"modify_cancel_booking_form"}
   - form{"name":null}
-  - action_slot_reset
   - utter_ask_more
+  - action_slot_reset
 * goodbye
   - utter_goodbye
   
-## modify_cancel_booking correction path 1
+<!--## modify_cancel_booking correction path 1
 * Modify_cancel_Booking
   - utter_show_cancel_booking_message
   - modify_cancel_booking_form
@@ -205,7 +216,19 @@
   - form{"name":null}
 * value_correction
   - action_change_value
-  - utter_ask_more
+  - utter_ask_more-->
+  
+## break a ModifyCancelBookingForm when main_menu intent occurs
+* Modify_cancel_Booking
+  - utter_show_cancel_booking_message
+  - modify_cancel_booking_form
+  - form{"name":"modify_cancel_booking_form"}
+* main_menu
+  - action_deactivate_form
+  - action_slot_reset
+  - modify_cancel_booking_form
+  - form{"name": null}
+  - utter_show_menu
   
 ## break a ModifyCancelBookingForm when greet intent occurs
 * Modify_cancel_Booking
@@ -213,10 +236,11 @@
   - modify_cancel_booking_form
   - form{"name":"modify_cancel_booking_form"}
 * greet
-    - action_deactivate_form
-    - action_slot_reset
-    - form{"name": null}
-    - utter_first_message
+  - action_deactivate_form
+  - action_slot_reset
+  - modify_cancel_booking_form
+  - form{"name": null}
+  - utter_first_message
 
 ## go_to_live_assistant
 * greet

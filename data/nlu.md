@@ -5,9 +5,13 @@
 
 ## intent: travel_menu
 - travel menu
+- travel_menu
+- /travel_menu
 
 ## intent:travel_best_valued_packages
 - plan my trip
+- /travel_best_valued_packages
+- travel_best_valued_packages
 
 ## intent:pet_bool
 - do you plan to bring [pets](pets)
@@ -15,9 +19,13 @@
 
 ## intent:travel_packages_by_interest
 - packages based on interest
+- /travel_packages_by_interest
+- travel_packages_by_interest
 
 ## intent:travel_packages_by_budget
 - packages based on budget
+- travel_packages_by_budget
+- /travel_packages_by_budget
 
 ## intent:property_type
 - property type
@@ -26,6 +34,8 @@
 - [cancel my booking](modify_booking)
 - [change my booking](modify_booking)
 - [modify my booking](modify_booking)
+- Modify_cancel_Booking
+- /Modify_cancel_Booking
 
 ## intent:faq
 - go to faq
@@ -171,6 +181,8 @@
 ## intent: track_booking
 - track my booking
 - track booking
+- track_booking
+- /track_booking
 
 ## intent: amenities
 - property type

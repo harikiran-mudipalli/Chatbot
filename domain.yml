@@ -18,7 +18,11 @@ intents:
 - amenities
 - property_type
 - facilities
-- property_booking
+- cancel_reschedule
+- packages
+- additional_services
+- utter_ask_more
+- track_booking
 - Modify_cancel_Booking
 - faq
 - get_live_assistance
@@ -40,20 +44,23 @@ entities:
 - number
 - change_travel_date
 - travel_date
-- change_travel_period
-- travel_period
 - change_budget
 - budget
 - bedroom
 - bathroom
 - wifi
 - pool
+- travel_period
 - greeting
+- change_travel_period
 slots:
   activity_date:
     type: unfeaturized
     auto_fill: false
   activity_name:
+    type: unfeaturized
+    auto_fill: false
+  additional_services:
     type: unfeaturized
     auto_fill: false
   adults_count:
@@ -78,12 +85,12 @@ slots:
     type: unfeaturized
     auto_fill: false
   facilities:
-    type: unfeaturized
+    type: list
     auto_fill: false
   origin:
     type: unfeaturized
     auto_fill: false
-  pets:
+  packages:
     type: unfeaturized
     auto_fill: false
   property_type:
@@ -92,29 +99,38 @@ slots:
   travel_date:
     type: unfeaturized
     auto_fill: false
-  travel_period:
-    type: unfeaturized
-    auto_fill: false
 responses:
   utter_ask_adults_count:
   - buttons:
     - payload: /travel_menu
       title: Back to Travel Menu?
+    custom:
+      payload: number
+      que: adults
     text: Enter number of Adults
   utter_ask_budget:
   - buttons:
     - payload: /travel_menu
       title: Back to Travel Menu?
-    text: What's an estimated budget range per person(excluding airfare)?
+    custom:
+      payload: number
+      que: budget
+    text: Alright dude. How much we have available to get on a trip?
   utter_ask_child_count:
   - buttons:
     - payload: /travel_menu
       title: Back to Travel Menu?
+    custom:
+      payload: number
+      que: child
     text: Enter number of children
   utter_ask_destination:
   - buttons:
     - payload: /travel_menu
       title: Back to Travel Menu?
+    custom:
+      payload: location
+      que: destination
     text: Enter your Destination
   utter_ask_more:
   - buttons:
@@ -124,48 +140,66 @@ responses:
       title: Travel Menu
     - payload: /goodbye
       title: No, Thanks
+    custom:
+      payload: text_msg
+      que: ask_more
     text: Would you like to check more services?
   utter_ask_origin:
   - buttons:
     - payload: /travel_menu
       title: Back to Travel Menu?
+    custom:
+      payload: location
+      que: origin
     text: Enter your boarding point
-  utter_ask_pets:
-  - buttons:
-    - payload: Yes
-      title: Yes
-    - payload: No
-      title: No
-    - payload: /travel_menu
-      title: Back to Travel Menu?
-    text: Do you plan to bring any pets to the trip?
   utter_ask_travel_date:
   - buttons:
     - payload: /travel_menu
       title: Back to Travel Menu?
-    text: Enter the date of Travel(DD/MM/YYYY)
-  utter_ask_travel_period:
-  - buttons:
-    - payload: /travel_menu
-      title: Back to Travel Menu?
-    text: Enter the length of stay
+    custom:
+      payload: dates
+      que: trip
+    text: Enter the start date and end date of your travel . Just drag the dates in
+      the calendar!
   utter_ask_amenities:
   - buttons:
     - payload: Yes
       title: Yes
     - payload: No
       title: No
+    custom:
+      payload: text_msg
+      que: amenities
     text: Would you like to choose Amenities?
   utter_ask_property_type:
   - buttons:
     - payload: /travel_menu
       title: Back to Travel Menu?
+    custom:
+      payload: menu
+      que: property_type
     text: Choose the Property Type
   utter_ask_facilities:
   - buttons:
     - payload: /travel_menu
       title: Back to Travel Menu?
+    custom:
+      payload: menu
+      que: facilities
     text: Choose the Facilities
+  utter_ask_packages:
+  - buttons:
+    - payload: /travel_menu
+      title: Back to Travel Menu?
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    custom:
+      payload: text_msg
+      que: packages
+    text: Rentastico is famous for creating some amazing package deals including flights.
+      Do you want see the packages available?
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
@@ -175,10 +209,16 @@ responses:
   - buttons:
     - payload: /main_menu
       title: Menu
+    custom:
+      payload: text_msg
+      que: menu
     text: "Hello! I'm TravelDude, Virtual assistant of Rentastico.\nClick on Menu\
       \ to assist you further"
   utter_goodbye:
-  - text: Bye
+  - custom:
+      payload: text_msg
+      que: goodbye
+    text: Bye
   utter_greet:
   - text: Hey! How are you?
   utter_happy:
@@ -186,21 +226,36 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   utter_ask_activity_name:
-  - text: Great dude! What activity(ies) or event(s) you interested in?
+  - buttons:
+    - payload: /travel_menu
+      title: i changed my mind!!!
+    custom:
+      payload: text_msg
+      que: activity_name
+    text: Great dude! What activity(ies) or event(s) you interested in?
   utter_ask_activity_date:
-  - text: Enter activity date
+  - buttons:
+    - payload: /travel_menu
+      title: i changed my mind!!!
+    custom:
+      payload: dates
+      que: activity_dates
+    text: enter the dates you would like to book to enjoy the activity
   utter_show_menu:
   - buttons:
     - payload: /travel_menu
       title: Travel Menu
-    - payload: /property_booking
-      title: Property Booking
+    - payload: /track_booking
+      title: track booking
     - payload: /Modify_cancel_Booking
       title: Modify/Cancel Booking
     - payload: /faq
       title: FAQ
     - payload: /get_live_assistance
       title: Get live assistance
+    custom:
+      payload: text_msg
+      que: main_menu
     text: How can I help you?
   utter_show_travel_menu:
   - buttons:
@@ -210,27 +265,52 @@ responses:
       title: Packages by Interest/Activity/Event
     - payload: /travel_packages_by_budget
       title: Packages based on Budget
+    custom:
+      payload: text_msg
+      que: travel_menu
     text: Choose one of the options.
   utter_show_cancel_booking_message:
-  - text: I'm sorry to know you are having trouble with the trip. I'll try to help
+  - buttons:
+    - payload: cancel
+      title: cancel my booking
+    - payload: reschedule
+      title: reschedule my booking
+    - payload: /main_menu
+      title: nah! take me to main menu
+    custom:
+      payload: text_msg
+      que: cancel_message
+    text: I'm sorry to know you are having trouble with the trip. I'll try to help
       you.
   utter_ask_booking_ID:
-  - text: Enter booking ID
-  utter_ask_cancel_reschedule:
-  - buttons:
-    - payload: Cancelation
-      title: Cancelation
-    - payload: Reschedule
-      title: Reschedule
-    text: Choose the action to be taken
+  - custom:
+      payload: text_msg
+      que: booking_id
+    text: Enter booking ID
+  utter_track_booking:
+  - custom:
+      payload: text_msg
+      que: track_message
+    text: awesome! give me few details, so that i can see how far your booking request
+      has come! okay?
   utter_show_live_support_link:
-  - text: Hold on while I connect to live assistant.
+  - custom:
+      payload: text_msg
+      que: live_message
+    text: Hold on while I connect to live assistant.
   utter_show_faq:
-  - text: showing FAQs
+  - custom:
+      payload: FAQ
+      que: faq_message
+    text: showing FAQs
   utter_default:
-    - text: Sorry, I didn’t understand that
+  - custom:
+    payload: default
+    que: default
+    text: Sorry, I didn’t understand that
 actions:
 - utter_greet
+- action_restart_form
 - utter_cheer_up
 - utter_did_that_help
 - utter_happy
@@ -242,29 +322,30 @@ actions:
 - utter_show_travel_menu
 - utter_ask_adults_count
 - utter_ask_child_count
-- utter_ask_pets
 - utter_ask_budget
 - utter_ask_travel_date
 - utter_ask_destination
 - utter_ask_origin
-- utter_ask_travel_period
 - utter_ask_amenities
 - utter_ask_property_type
 - utter_ask_facilities
+- utter_ask_packages
 - utter_ask_more
 - utter_ask_activity_name
 - utter_ask_activity_date
 - utter_show_cancel_booking_message
 - utter_ask_booking_ID
-- utter_ask_cancel_reschedule
 - utter_show_live_support_link
 - utter_show_faq
 - action_change_value
 - action_slot_reset
 - action_restart
+- utter_track_booking
+- utter_default
 forms:
 - trip_plan_form
 - activity_package_search_form
 - package_by_budget_form
 - modify_cancel_booking_form
-- property_booking_form
+- track_booking_form
+- action_ask_services
