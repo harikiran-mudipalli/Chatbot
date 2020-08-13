@@ -231,8 +231,8 @@ class ModifyCancelBookingForm(FormAction):
 
     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
         return {
-            "cancel_reschedule": [self.from_text()],
-            "booking_ID": [self.from_text(), ],
+            "cancel_reschedule": [self.from_text(not_intent=["travel_menu", "greet", "main_menu"])],
+            "booking_ID": [self.from_text(not_intent=["travel_menu", "greet", "main_menu"]), ],
         }
 
     def submit(

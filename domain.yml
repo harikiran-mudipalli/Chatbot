@@ -76,8 +76,10 @@ slots:
     type: unfeaturized
     auto_fill: false
   cancel_reschedule:
-    type: unfeaturized
-    auto_fill: false
+    type: categorical
+    values:
+    - cancel
+    - reschedule
   child_count:
     type: unfeaturized
     auto_fill: false
@@ -342,6 +344,8 @@ actions:
 - action_restart
 - utter_track_booking
 - utter_default
+- action_change_value-->
+- action_slot_reset-->
 forms:
 - trip_plan_form
 - activity_package_search_form
