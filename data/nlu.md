@@ -129,7 +129,7 @@
     - and that's it?
     - nothing else?
 
-## intent: value_correction
+<!--## intent: value_correction
 - I want to [change my destination](change_destination) to [New York](destination)
 - can I [change my destination](change_destination) to [Barcelona](destination)?
 - can you [change my destination](change_destination) to [Athens](destination)?
@@ -177,7 +177,7 @@
 - [change travel date](change_travel_date) to [11/11/23](travel_date)
 - [change travel period](change_travel_period) to [12](travel_period)
 - [change budget](change_budget) to [2000](budget)
-
+-->
 ## intent: track_booking
 - track my booking
 - track booking

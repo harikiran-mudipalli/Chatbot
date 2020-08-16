@@ -26,9 +26,9 @@ intents:
 - Modify_cancel_Booking
 - faq
 - get_live_assistance
-- value_correction
 - property_booking_menu
 - stop
+- value_correction
 entities:
 - pets
 - modify_booking

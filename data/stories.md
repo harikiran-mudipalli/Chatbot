@@ -4,11 +4,17 @@
 * main_menu
   - utter_show_menu
   
+## choose travel menu path
+* greet
+  - utter_first_message
+* main_menu
+  - utter_show_menu
+* travel_menu
+  - utter_show_travel_menu
+  
 <!--####### Travel by best valued package ######-->  
   
 ## travel_by_best_valued_path
-* travel_menu
-  - utter_show_travel_menu
 * travel_best_valued_packages
   - trip_plan_form
   - form{"name":"trip_plan_form"}
@@ -59,8 +65,6 @@
 <!--################# Travel by interest/activity ####################-->
   
 ## travel_packages_by_interest_path
-* travel_menu
-  - utter_show_travel_menu
 * travel_packages_by_interest
   - utter_ask_activity_name
   - activity_package_search_form
@@ -119,8 +123,6 @@
 <!--################# Travel by budget ####################-->
 
 ## travel_packages_by_budget
-* travel_menu
-  - utter_show_travel_menu
 * travel_packages_by_budget
   - utter_ask_budget
   - package_by_budget_form
@@ -151,23 +153,23 @@
   
 ## break a PackageByBudgetForm when travel_menu intent occurs
 * travel_packages_by_budget
-    - package_by_budget_form
-    - form{"name": "package_by_budget_form"}
+  - package_by_budget_form
+  - form{"name": "package_by_budget_form"}
 * travel_menu
-    - action_deactivate_form
-    - action_slot_reset
-    - form{"name": null}
-    - utter_show_travel_menu
+  - action_deactivate_form
+  - form{"name": null}
+  - action_slot_reset
+  - utter_show_travel_menu
     
 ## break a PackageByBudgetForm when greet intent occurs
 * travel_packages_by_budget
-    - package_by_budget_form
-    - form{"name": "package_by_budget_form"}
+  - package_by_budget_form
+  - form{"name": "package_by_budget_form"}
 * greet
-    - action_deactivate_form
-    - action_slot_reset
-    - form{"name": null}
-    - utter_first_message
+  - action_deactivate_form
+  - action_slot_reset
+  - form{"name": null}
+  - utter_first_message
     
 <!--################# Track booking ####################-->
 ## track booking happy path
